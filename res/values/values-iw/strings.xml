@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FinalProject</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    
+    <string name="first_name">שם פרטי</string>
+    <string name="last_name">שם משפחה</string>
+    <string name="email">דוא\u200e"\u200eל</string>
+	<string name="password">סיסמא</string>    
+	<string name="link_to_login">רשום \u200e?\u200e כנס כאן</string>
+	<string name="link_to_register">אין לך חשבון\u200e?\u200e הרשם כאן</string>
+	<string name="register">הרשמה</string>
+	<string name="login">כניסה</string>
+	<string name="logout">יציאה</string>
+
+</resources>

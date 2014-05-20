@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">פרויקט גמר</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <!-- activity strings -->
+    <string name="main_activity">הדף הראשי</string>
+    <string name="login_activity">מסך כניסה</string>
+    <string name="register_activity">מסך הרשמה</string>
+    <string name="settings_activity">מסך הגדרות</string>
+    <string name="user_prefrences_activity">מסך נתונים אישיים</string>
+    <string name="user_prefrences_cont_activity">מסך נתונים אישיים המשך</string>
+    <string name="training_plan_activity">מסך תכנית אימונים</string>
+    <string name="training_activity">מסך אימון</string>
+    <string name="exercise_activity">מסך תרגיל</string>
+    <string name="logo">לוגו</string>
+    
+    <!-- login and register activity strings -->
+    <string name="first_name">שם פרטי</string>
+    <string name="last_name">שם משפחה</string>
+    <string name="email">דוא\u200e"\u200eל</string>
+	<string name="password">סיסמא</string>    
+	<string name="link_to_login">רשום \u200e?\u200e כנס כאן</string>
+	<string name="link_to_register">אין לך חשבון\u200e?\u200e הרשם כאן</string>
+	<string name="register">הרשמה</string>
+	<string name="login">כניסה</string>
+	<string name="logout">יציאה</string>
+	
+    <!-- main activity strings -->
+    <string name="create_training_plan">צור תכנית אימונים</string>
+    <string name="settings">הגדרות</string>
+	
+	
+	
+	<!-- exercise activity strings -->
+	<string name="exercise_name">שם התרגיל</string>
+	<string name="exercise_description">תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל</string>
+	
+	<!-- training activity strings -->
+	
+	<!-- training plan activity strings -->
+	
+	<!-- user preferences activity strings -->
+	<string name="goal">מטרת האימון</string>
+		<string name="goal1">שרירים</string>
+		<string name="goal2">בריאות</string>
+		<string name="goal3">משקל</string>
+	<string name="length">אורך האימון</string>
+	<string name="level">רמת האימון</string>
+		<string-array name="array_level">
+	        <item>קל מאוד</item>
+	        <item>קל</item>
+	        <item>בינוני</item>
+	        <item>קשה</item>
+	        <item>קשה מאוד</item>
+    	</string-array>
+	<string name="muscle_focus">התמקדות שרירים באימון</string>
+		<string-array name="array_muscle_focus">
+	        <item>מאוזן</item>
+	        <item>ידיים</item>
+	        <item>בטן</item>
+	        <item>רגליים</item>
+	        <item>גב</item>
+    	</string-array>	
+	<string name="phases">תוספות לאימון</string>
+		<string name="phases1">כלול חימום</string>
+		<string name="phases2">כלול שחרור</string>
+	<string name="next">המשך</string>
+	
+	<!-- user preferences cont activity strings -->
+	
+	<string name="schedule">ימי אימון</string>
+		<string name="sunday">ראשון</string>
+		<string name="monday">שני</string>
+		<string name="tuesday">שלישי</string>
+		<string name="wednesday">רביעי</string>
+		<string name="thursday">חמישי</string>
+		<string name="friday">שישי</string>
+		<string name="saturday">שבת</string>
+	<string name="workout_time">זמן תחילת אימון מועדף</string>
+
+	<string name="reminder">תזכורת</string>
+		<string-array name="array_reminder">
+	        <item>בזמן האימון</item>
+	        <item>5 דקות לפני האימון</item>
+	        <item>10 דקות לפני האימון</item>
+	        <item>15 דקות לפני האימון</item>
+	        <item>20 דקות לפני האימון</item>
+	        <item>חצי שעה לפני האימון</item>
+	        <item>שעה לפני האימון</item>
+	        <item>שעה וחצי לפני האימון</item>
+    	</string-array>
+	
+
+</resources>

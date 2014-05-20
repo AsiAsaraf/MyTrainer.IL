@@ -1,0 +1,23 @@
+KEY_ID,KEY_NAME,KEY_DESCRIPTION,KEY_DIFFICULTY,KEY_CATEGORY,KEY_LENGTH,KEY_IMAGE
+,Exercise 1,Exercise 1,Hard,Foo,20,res/drawable/exercise1
+,Exercise 2,Exercise 2,Easy,Goo,25,res/drawable/exercise2
+,Exercise 3,Exercise 3,Medium,Doo,15,res/drawable/exercise3
+,Exercise 4,Exercise 4,Hard,Soo,10,res/drawable/exercise4
+,Exercise 5,Exercise 5,Easy,Foo,15,res/drawable/exercise5
+,Exercise 6,Exercise 6,Medium,Goo,20,res/drawable/exercise6
+,Exercise 7,Exercise 7,Hard,Doo,25,res/drawable/exercise7
+,Exercise 8,Exercise 8,Easy,Soo,15,res/drawable/exercise8
+,Exercise 9,Exercise 9,Medium,Foo,10,res/drawable/exercise9
+,Exercise 10,Exercise 10,Hard,Goo,15,res/drawable/exercise10
+,Exercise 11,Exercise 11,Easy,Doo,20,res/drawable/exercise11
+,Exercise 12,Exercise 12,Medium,Soo,25,res/drawable/exercise12
+,Exercise 13,Exercise 13,Hard,Foo,15,res/drawable/exercise13
+,Exercise 14,Exercise 14,Easy,Goo,10,res/drawable/exercise14
+,Exercise 15,Exercise 15,Medium,Doo,15,res/drawable/exercise15
+,Exercise 16,Exercise 16,Hard,Soo,20,res/drawable/exercise16
+,Exercise 17,Exercise 17,Easy,Foo,25,res/drawable/exercise17
+,Exercise 18,Exercise 18,Medium,Goo,15,res/drawable/exercise18
+,Exercise 19,Exercise 19,Hard,Doo,10,res/drawable/exercise19
+,Exercise 20,Exercise 20,Easy,Soo,15,res/drawable/exercise20
+,Exercise 21,Exercise 21,Medium,Foo,20,res/drawable/exercise21
+,Exercise 22,Exercise 22,Hard,Goo,25,res/drawable/exercise22
