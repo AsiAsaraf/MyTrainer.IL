@@ -16,8 +16,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -100,7 +98,9 @@ public class UserPreferencesContActivity extends Activity{
 	        @Override
 	        public void onClick(View view) {
 	        	userPreferencesDao.scheduleBoolToString(userPreferences);
-	        	userPreferencesDao.createUserPrefrences(userPreferences);
+	        	long userPreferencesId = userPreferencesDao.createUserPrefrences(userPreferences);
+	        	userPreferences.setId(userPreferencesId);
+	        	userPreferencesDao.calcTrainingPlan(userPreferences);
 	            Intent myIntent = new Intent(view.getContext(), TrainingPlanActivity.class);
 	            startActivityForResult(myIntent, 0);
 	            finish();

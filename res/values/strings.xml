@@ -29,6 +29,7 @@
 	
     <!-- main activity strings -->
     <string name="create_training_plan">צור תכנית אימונים</string>
+    <string name="enter_training_plan">תכנית האימונים שלי</string>
     <string name="settings">הגדרות</string>
 	
 	
@@ -38,8 +39,22 @@
 	<string name="exercise_description">תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל</string>
 	
 	<!-- training activity strings -->
+	<string name="col_exercise_num">מספר</string>
+	<string name="col_exercise_name">תרגיל</string>
+	<string name="col_exercise_training">שייך לאימון</string>
+	
+	<string name="training_num">אימון מספר</string>
 	
 	<!-- training plan activity strings -->
+	<string name="col_training_num">מספר</string>
+	<string name="col_training_name">אימון</string>
+	<string name="col_training_length">אורך</string>
+	<string name="col_training_date">תאריך ושעה</string>
+	
+	<string name="training_plan_name">תכנית האימונים שלי</string>
+	
+<!-- 	<string name=""></string> -->
+	
 	
 	<!-- user preferences activity strings -->
 	<string name="goal">מטרת האימון</string>

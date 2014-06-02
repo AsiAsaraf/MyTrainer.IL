@@ -2,17 +2,11 @@ package il.ac.shenkar.MyTrainerIL.activity;
 
 import il.ac.shenkar.MyTrainerIL.R;
 import il.ac.shenkar.MyTrainerIL.dao.TrainingDao;
-import il.ac.shenkar.MyTrainerIL.dao.TrainingPlanDao;
-import il.ac.shenkar.MyTrainerIL.entities.Exercise;
 import il.ac.shenkar.MyTrainerIL.entities.Training;
-import il.ac.shenkar.MyTrainerIL.entities.TrainingPlan;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.TableRow.LayoutParams;
 
 public class TrainingActivity extends Activity{
 

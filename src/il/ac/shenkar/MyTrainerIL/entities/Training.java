@@ -12,7 +12,7 @@ public class Training {
 		private String executeTime;
 		private int length;
 		private String reminder;
-		private List<Exercise> exerciseList;
+		private List<ExerciseTraining> exerciseTrainingList;
 		
 	//private flags
 		private int	doneFlag;
@@ -88,17 +88,17 @@ public class Training {
 		}
 
 		/**
-		 * @return the exerciseList
+		 * @return the exerciseTrainnigList
 		 */
-		public List<Exercise> getExerciseList() {
-			return exerciseList;
+		public List<ExerciseTraining> getExerciseTrainingList() {
+			return exerciseTrainingList;
 		}
 
 		/**
-		 * @param exerciseList the exerciseList to set
+		 * @param exerciseTrainnigList the exerciseList to set
 		 */
-		public void setExerciseList(List<Exercise> exerciseList) {
-			this.exerciseList = exerciseList;
+		public void setExerciseTrainngList(List<ExerciseTraining> exerciseTrainnigList) {
+			this.exerciseTrainingList = exerciseTrainnigList;
 		}
 
 		/**

@@ -23,7 +23,6 @@ import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.text.GetChars;
 import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -38,9 +37,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	// Database Name
 	private static final String DATABASE_NAME = "MyTrainerIL";
-	
-	// Import file path
-	private static final String FILE_NAME = "assets/exercise.csv";
 
 	// Table Names
 	private static final String TABLE_EXERCISE = "exercise";
@@ -70,7 +66,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String KEY_DESCRIPTION = "description";
 	private static final String KEY_DIFFICULTY = "difficulty";
 	private static final String KEY_CATEGORY = "category";
-	private static final String KEY_IMAGE = "image";
+	private static final String KEY_GOAL1 = "goal1";
+	private static final String KEY_GOAL2 = "goal2";
+	private static final String KEY_GOAL3 = "goal3";
+ 	private static final String KEY_IMAGE = "image";
 
 	// TRAINING Table - column names
 	private static final String KEY_TRAINING_PLAN_ID = "training_plan_id";
@@ -103,6 +102,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			+ KEY_DIFFICULTY + " TEXT," 
 			+ KEY_CATEGORY + " TEXT," 
 			+ KEY_LENGTH + " TEXT,"
+			+ KEY_GOAL1 + " INTEGER,"
+			+ KEY_GOAL2 + " INTEGER,"
+			+ KEY_GOAL3 + " INTEGER,"
 			+ KEY_IMAGE + " TEXT" + ")";
 
 	// Training table create statement
@@ -125,8 +127,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	// ExerciseTraining table create statement 
 	private static final String CREATE_TABLE_EXERCISE_TRAINING = "CREATE TABLE "
-			+ TABLE_EXERCISE_TRAINING + "(" + KEY_EXERCISE_ID + " INTEGER,"
-			+ KEY_TRAINING_ID + " INTEGER PRIMARY KEY,"
+			+ TABLE_EXERCISE_TRAINING + "(" + KEY_ID + " INTEGER PRIMARY KEY," 
+			+ KEY_EXERCISE_ID + " INTEGER,"
+			+ KEY_TRAINING_ID + " INTEGER,"
 			+ KEY_CREATED_AT + " DATETIME" + ")";
 
 	// User table create statement
@@ -193,7 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ContentValues values;
                 while ((line = bufferedReader.readLine()) != null) {
                 	String[] rowData = line.split(",");
-                	if (rowData.length == 7) {
+                	if (rowData.length == 10) {
                         values = new ContentValues();
                         //Record exercise found, now get values and insert record
                 		values.put(KEY_NAME, rowData[1]);
@@ -201,7 +204,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 		values.put(KEY_DIFFICULTY, rowData[3]);
                 		values.put(KEY_CATEGORY, rowData[4]);
                 		values.put(KEY_LENGTH, rowData[5]);
-                		values.put(KEY_IMAGE, rowData[6]);
+                		values.put(KEY_GOAL1, rowData[6]);
+                		values.put(KEY_GOAL2, rowData[7]);
+                		values.put(KEY_GOAL3, rowData[8]);
+                		values.put(KEY_IMAGE, rowData[9]);
                         db.insert(TABLE_EXERCISE, null, values);   
                 	}
                 }
@@ -243,6 +249,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		values.put(KEY_DIFFICULTY, exercise.getDifficulty());
 		values.put(KEY_CATEGORY, exercise.getCategory());
 		values.put(KEY_LENGTH, exercise.getLength());
+		values.put(KEY_GOAL1, exercise.getGoal1());
+		values.put(KEY_GOAL2, exercise.getGoal2());
+		values.put(KEY_GOAL3, exercise.getGoal3());
 		values.put(KEY_IMAGE, exercise.getImage());
 
 		// insert row
@@ -275,6 +284,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		exercise.setDifficulty(c.getString(c.getColumnIndex(KEY_DIFFICULTY)));
 		exercise.setCategory(c.getString(c.getColumnIndex(KEY_CATEGORY)));
 		exercise.setLength(c.getInt(c.getColumnIndex(KEY_LENGTH)));
+		exercise.setGoal1(c.getInt(c.getColumnIndex(KEY_GOAL1))>0);
+		exercise.setGoal2(c.getInt(c.getColumnIndex(KEY_GOAL2))>0);
+		exercise.setGoal3(c.getInt(c.getColumnIndex(KEY_GOAL3))>0);
 		exercise.setImage(c.getString(c.getColumnIndex(KEY_IMAGE)));
 		
 		Log.i("DatabaseHelper", "Exercise: " + exercise_id + " found seccesfully");
@@ -294,6 +306,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		values.put(KEY_DIFFICULTY, exercise.getDifficulty());
 		values.put(KEY_CATEGORY, exercise.getCategory());
 		values.put(KEY_LENGTH, exercise.getLength());
+		values.put(KEY_GOAL1, exercise.getGoal1());
+		values.put(KEY_GOAL2, exercise.getGoal2());
+		values.put(KEY_GOAL3, exercise.getGoal3());				
 		values.put(KEY_IMAGE, exercise.getImage());
 		
 		Log.i("DatabaseHelper", "Exercise: " + exercise.getId() + " updated seccesfully");
@@ -418,8 +433,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 */
 	//TODO
 	public void deleteTraining(long training_id) {
-		SQLiteDatabase db = this.getWritableDatabase();
-/*
+/*		SQLiteDatabase db = this.getWritableDatabase();
+
 		// before deleting training
 		// check if exercises under this training should also be deleted
 		if (should_delete_all_tag_todos) {
@@ -443,7 +458,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 */
 	public List<Training> getAllTrainingsInPlan(long trainingPlan_id) {
 		List<Training> trainings = new ArrayList<Training>();
-	    String selectQuery = "SELECT * FROM " + TABLE_TRAINING + "WHERE " + KEY_TRAINING_PLAN_ID + " = " + trainingPlan_id;
+	    String selectQuery = "SELECT * FROM " + TABLE_TRAINING + " WHERE " + KEY_TRAINING_PLAN_ID + " = " + trainingPlan_id;
 	 
 	    Log.e(LOG, selectQuery);
 	 
@@ -473,6 +488,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// ------------------------ "TrainingPlan" table methods ----------------//
 
 	/**
+	 * Calculate a training plan
+	 */
+	public List<ExerciseTraining> getExerciseTrainingListByUserPref(UserPreferences userPreferences) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		String KEY_TEMP_GOAL = "";
+		if(userPreferences.getGoal()==1)
+			KEY_TEMP_GOAL = "goal1";
+		else if(userPreferences.getGoal()==2)
+			KEY_TEMP_GOAL = "goal2";
+		else if(userPreferences.getGoal()==3)
+			KEY_TEMP_GOAL = "goal3";
+		String selectQuery = "SELECT * FROM " + TABLE_EXERCISE + " WHERE "
+				+ KEY_DIFFICULTY + " = " + "'" + userPreferences.getLevel() + "'" 
+				+ " AND " + KEY_CATEGORY + " = '" + userPreferences.getMuscleFocus() + "'"
+				+  " AND " + KEY_TEMP_GOAL + " = " + 1;
+
+		Log.e(LOG, selectQuery);
+
+		Cursor c = db.rawQuery(selectQuery, null);
+			
+	    // looping through all rows and adding to list
+			if (c != null){
+				List<ExerciseTraining> exerciseTrainingList = new ArrayList<ExerciseTraining>();
+				c.moveToFirst();
+		        do {
+		    		ExerciseTraining exerciseTraining = new ExerciseTraining();
+		    		Exercise exercise = this.getExercise(c.getLong(c.getColumnIndex(KEY_ID)));
+		    		
+		    		exerciseTraining.setExercise(exercise);
+	
+		            // adding to training list
+		    		exerciseTrainingList.add(exerciseTraining);
+		        } while (c.moveToNext());
+		        return exerciseTrainingList;
+			}
+			return null;
+	}
+
+	
+	
+	/**
 	 * Create a training plan
 	 */
 	public long createTrainingPlan(TrainingPlan trainingPlan) {
@@ -490,7 +546,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 	
 	/**
-	 * Get a training plan
+	 * Get a training plan by training plan id
 	 */
 	public TrainingPlan getTrainingPlan(long trainingPlan_id) {
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -509,6 +565,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		trainingPlan.setId(c.getLong(c.getColumnIndex(KEY_ID)));
 		trainingPlan.setName(c.getString(c.getColumnIndex(KEY_NAME)));
 		trainingPlan.setUser(getUser(c.getLong(c.getColumnIndex(KEY_USER_ID))));
+		
+		return trainingPlan;
+	}
+	
+	/**
+	 * Get a training plan by user id
+	 */
+	public TrainingPlan getTrainingPlanByUser(long user_id) {
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		String selectQuery = "SELECT * FROM " + TABLE_TRAINING_PLAN + " WHERE "
+				+ KEY_USER_ID + " = " + user_id;
+
+		Log.e(LOG, selectQuery);
+
+		Cursor c = db.rawQuery(selectQuery, null);
+
+		if (c != null)
+			c.moveToFirst();
+
+		TrainingPlan trainingPlan = new TrainingPlan();
+		trainingPlan.setId(c.getLong(c.getColumnIndex(KEY_ID)));
+		trainingPlan.setName(c.getString(c.getColumnIndex(KEY_NAME)));
+		trainingPlan.setUser(getUser(c.getLong(c.getColumnIndex(KEY_USER_ID))));
+		trainingPlan.setTrainingList(getAllTrainingsInPlan(c.getLong(c.getColumnIndex(KEY_ID))));
 		
 		return trainingPlan;
 	}
@@ -585,16 +666,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 */
 	//TODO - exerciseTraining have no unique id
 	public int updateExerciseTraining(ExerciseTraining exerciseTraining) {
-		SQLiteDatabase db = this.getWritableDatabase();
+/*		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
 		values.put(KEY_EXERCISE_ID, exerciseTraining.getExercise().getId());
 		values.put(KEY_TRAINING_ID, exerciseTraining.getTraining().getId());
 
 		// updating row
-		//return db.update(TABLE_EXERCISE_TRAINING, values, KEY_ID + " = ?",
-		//		new String[] { String.valueOf(exerciseTraining.getId()) });
-			return 0;	
+		return db.update(TABLE_EXERCISE_TRAINING, values, KEY_ID + " = ?",
+				new String[] { String.valueOf(exerciseTraining.getId()) });
+		*/	return 0;	
 	}
 
 	/**

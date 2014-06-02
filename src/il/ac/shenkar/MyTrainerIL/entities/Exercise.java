@@ -10,6 +10,9 @@ public class Exercise {
 		private String difficulty;
 		private String category;
 		private int length;
+		private Boolean goal1;
+		private Boolean goal2;
+		private Boolean goal3;
 		private String image;
 		
 	
@@ -97,6 +100,48 @@ public class Exercise {
 			this.length = length;
 		}
 	
+		/**
+		 * @return the goal1
+		 */
+		public Boolean getGoal1() {
+			return goal1;
+		}
+
+		/**
+		 * @param goal1 the goal1 to set
+		 */
+		public void setGoal1(Boolean goal1) {
+			this.goal1 = goal1;
+		}
+
+		/**
+		 * @return the goal2
+		 */
+		public Boolean getGoal2() {
+			return goal2;
+		}
+
+		/**
+		 * @param goal2 the goal2 to set
+		 */
+		public void setGoal2(Boolean goal2) {
+			this.goal2 = goal2;
+		}
+
+		/**
+		 * @return the goal3
+		 */
+		public Boolean getGoal3() {
+			return goal3;
+		}
+
+		/**
+		 * @param goal3 the goal3 to set
+		 */
+		public void setGoal3(Boolean goal3) {
+			this.goal3 = goal3;
+		}
+
 		/**
 		 * @return the image
 		 */

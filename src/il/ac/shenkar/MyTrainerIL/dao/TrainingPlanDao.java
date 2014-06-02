@@ -16,7 +16,8 @@ public class TrainingPlanDao {
 	}
 
 	public TrainingPlan getTrainingPlanByUser(){
-		TrainingPlan trainingPlan = new TrainingPlan();
+		long user_id = databaseHelper.getLogin();
+		TrainingPlan trainingPlan = databaseHelper.getTrainingPlanByUser(user_id);
 		return trainingPlan;
 	}
 

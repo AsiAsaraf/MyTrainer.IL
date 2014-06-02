@@ -1,23 +1,40 @@
-KEY_ID,KEY_NAME,KEY_DESCRIPTION,KEY_DIFFICULTY,KEY_CATEGORY,KEY_LENGTH,KEY_IMAGE
-,Exercise 1,Exercise 1,Hard,Foo,20,res/drawable/exercise1
-,Exercise 2,Exercise 2,Easy,Goo,25,res/drawable/exercise2
-,Exercise 3,Exercise 3,Medium,Doo,15,res/drawable/exercise3
-,Exercise 4,Exercise 4,Hard,Soo,10,res/drawable/exercise4
-,Exercise 5,Exercise 5,Easy,Foo,15,res/drawable/exercise5
-,Exercise 6,Exercise 6,Medium,Goo,20,res/drawable/exercise6
-,Exercise 7,Exercise 7,Hard,Doo,25,res/drawable/exercise7
-,Exercise 8,Exercise 8,Easy,Soo,15,res/drawable/exercise8
-,Exercise 9,Exercise 9,Medium,Foo,10,res/drawable/exercise9
-,Exercise 10,Exercise 10,Hard,Goo,15,res/drawable/exercise10
-,Exercise 11,Exercise 11,Easy,Doo,20,res/drawable/exercise11
-,Exercise 12,Exercise 12,Medium,Soo,25,res/drawable/exercise12
-,Exercise 13,Exercise 13,Hard,Foo,15,res/drawable/exercise13
-,Exercise 14,Exercise 14,Easy,Goo,10,res/drawable/exercise14
-,Exercise 15,Exercise 15,Medium,Doo,15,res/drawable/exercise15
-,Exercise 16,Exercise 16,Hard,Soo,20,res/drawable/exercise16
-,Exercise 17,Exercise 17,Easy,Foo,25,res/drawable/exercise17
-,Exercise 18,Exercise 18,Medium,Goo,15,res/drawable/exercise18
-,Exercise 19,Exercise 19,Hard,Doo,10,res/drawable/exercise19
-,Exercise 20,Exercise 20,Easy,Soo,15,res/drawable/exercise20
-,Exercise 21,Exercise 21,Medium,Foo,20,res/drawable/exercise21
-,Exercise 22,Exercise 22,Hard,Goo,25,res/drawable/exercise22
+KEY_ID,KEY_NAME,KEY_DESCRIPTION,KEY_DIFFICULTY,KEY_CATEGORY,KEY_LENGTH,KEY_GOAL1,KEY_GOAL2,KEY_GOAL3,KEY_IMAGE
+,Exercise 1,Exercise 1 description,קל מאוד,מאוזן,20,1,0,0,res/drawable/exercise1
+,Exercise 2,Exercise 2 description,קל,ידיים,25,0,1,0,res/drawable/exercise2
+,Exercise 3,Exercise 3 description,בינוני,בטן,15,0,0,1,res/drawable/exercise3
+,Exercise 4,Exercise 4 description,קשה,רגליים,10,1,1,1,res/drawable/exercise4
+,Exercise 5,Exercise 5 description,קשה מאוד,גב,15,1,1,0,res/drawable/exercise5
+,Exercise 6,Exercise 6 description,קל מאוד,מאוזן,20,0,1,1,res/drawable/exercise6
+,Exercise 7,Exercise 7 description,קל,ידיים,25,1,0,1,res/drawable/exercise7
+,Exercise 8,Exercise 8 description,בינוני,בטן,15,1,0,0,res/drawable/exercise8
+,Exercise 9,Exercise 9 description,קשה,רגליים,10,0,1,0,res/drawable/exercise9
+,Exercise 10,Exercise 10 description,קשה מאוד,גב,15,0,0,1,res/drawable/exercise10
+,Exercise 11,Exercise 11 description,קל מאוד,מאוזן,20,1,1,1,res/drawable/exercise11
+,Exercise 12,Exercise 12 description,קל,ידיים,25,1,1,0,res/drawable/exercise12
+,Exercise 13,Exercise 13 description,בינוני,בטן,15,0,1,1,res/drawable/exercise13
+,Exercise 14,Exercise 14 description,קשה,רגליים,10,1,0,1,res/drawable/exercise14
+,Exercise 15,Exercise 15 description,קשה מאוד,גב,15,1,0,0,res/drawable/exercise15
+,Exercise 16,Exercise 16 description,קל מאוד,מאוזן,20,0,1,0,res/drawable/exercise16
+,Exercise 17,Exercise 17 description,קל,ידיים,25,0,0,1,res/drawable/exercise17
+,Exercise 18,Exercise 18 description,בינוני,בטן,15,1,1,1,res/drawable/exercise18
+,Exercise 19,Exercise 19 description,קשה,רגליים,10,1,1,0,res/drawable/exercise19
+,Exercise 20,Exercise 20 description,קשה מאוד,גב,15,0,1,1,res/drawable/exercise20
+,Exercise 21,Exercise 21 description,קל מאוד,מאוזן,20,1,0,1,res/drawable/exercise21
+,Exercise 22,Exercise 22 description,קל,ידיים,25,1,0,0,res/drawable/exercise22
+,Exercise 23,Exercise 23 description,בינוני,בטן,15,0,1,0,res/drawable/exercise23
+,Exercise 24,Exercise 24 description,קשה,רגליים,10,0,0,1,res/drawable/exercise24
+,Exercise 25,Exercise 25 description,קשה מאוד,גב,15,1,1,1,res/drawable/exercise25
+,Exercise 26,Exercise 26 description,קל מאוד,מאוזן,20,1,1,0,res/drawable/exercise26
+,Exercise 27,Exercise 27 description,קל,ידיים,25,0,1,1,res/drawable/exercise27
+,Exercise 28,Exercise 28 description,בינוני,בטן,10,1,0,1,res/drawable/exercise28
+,Exercise 29,Exercise 29 description,קשה,רגליים,15,1,0,0,res/drawable/exercise29
+,Exercise 30,Exercise 30 description,קשה מאוד,גב,20,0,1,0,res/drawable/exercise30
+,Exercise 31,Exercise 31 description,קל מאוד,מאוזן,25,0,0,1,res/drawable/exercise31
+,Exercise 32,Exercise 32 description,קל,ידיים,10,1,1,1,res/drawable/exercise32
+,Exercise 33,Exercise 33 description,בינוני,בטן,15,1,1,0,res/drawable/exercise33
+,Exercise 34,Exercise 34 description,קשה,חימום,20,0,1,1,res/drawable/exercise34
+,Exercise 35,Exercise 35 description,קשה מאוד,שחרור,25,1,0,1,res/drawable/exercise35
+,Exercise 36,Exercise 36 description,קל מאוד,חימום,10,1,0,0,res/drawable/exercise36
+,Exercise 37,Exercise 37 description,קל,שחרור,15,0,1,0,res/drawable/exercise37
+,Exercise 38,Exercise 38 description,בינוני,חימום,20,0,0,1,res/drawable/exercise38
+,Exercise 39,Exercise 39 description,קשה,שחרור,25,1,1,1,res/drawable/exercise39

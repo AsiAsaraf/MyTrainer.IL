@@ -18,7 +18,8 @@ public class MainActivity extends Activity {
 	//Defining layout items
 	private Button btnLogout;
 	private Button btnSettings;
-	private Button btnTrainingPlan;
+	private Button btnCreateTrainingPlan;
+	private Button btnEnterTrainingPlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,8 @@ public class MainActivity extends Activity {
          **/
         btnLogout = (Button)findViewById(R.id.btn_logout);
         btnSettings = (Button)findViewById(R.id.btn_settings);
-        btnTrainingPlan = (Button)findViewById(R.id.btn_trainig_plan);
+        btnCreateTrainingPlan = (Button)findViewById(R.id.btn_create_trainig_plan);
+        btnEnterTrainingPlan = (Button)findViewById(R.id.btn_enter_trainig_plan);
         
         /**
          * Logout Button click event.
@@ -75,10 +77,23 @@ public class MainActivity extends Activity {
         /**
          * Training plan Button click event.
          **/
-        btnTrainingPlan.setOnClickListener(new View.OnClickListener() {
+        btnCreateTrainingPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), UserPreferencesActivity.class);
+                myIntent.putExtra("user",userId);
+                startActivityForResult(myIntent, 0);
+                finish();
+            }
+        });        
+        
+        /**
+         * Training plan Enter click event.
+         **/
+        btnEnterTrainingPlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), TrainingPlanActivity.class);
                 myIntent.putExtra("user",userId);
                 startActivityForResult(myIntent, 0);
                 finish();
