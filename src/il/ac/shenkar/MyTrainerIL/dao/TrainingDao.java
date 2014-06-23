@@ -15,8 +15,8 @@ public class TrainingDao {
 		databaseHelper = new DatabaseHelper(context);
 	}
 
-	public Training getTrainingByUser() {
-		// TODO Auto-generated method stub
-		return null;
+	public Training getTrainingById(long training_id) {
+		Training training = databaseHelper.getTraining(training_id);
+		return training;
 	}
 }

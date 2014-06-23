@@ -147,8 +147,9 @@ public class UserPreferencesActivity extends Activity{
 				int index = parent.getSelectedItemPosition();
 	               // storing string resources into Array
 	               String[] muscleFocus = getResources().getStringArray(R.array.array_muscle_focus);
-	               userPreferences.setMuscleFocus(parent.getItemAtPosition(position).toString());
-	                Toast.makeText(getBaseContext(), "You have selected : " + muscleFocus[index], 
+	               //userPreferences.setMuscleFocus(parent.getItemAtPosition(position).toString());
+	               userPreferences.setMuscleFocus(position); 
+	               Toast.makeText(getBaseContext(), "You have selected : " + muscleFocus[index], 
 	                        Toast.LENGTH_SHORT).show();				
 			}
 

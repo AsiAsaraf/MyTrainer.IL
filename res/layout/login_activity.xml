@@ -3,7 +3,7 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:fillViewport="true"
-  android:background="#ffffff">
+  android:background="@drawable/background">
  		
  	<!--  Header  Starts-->
  	<LinearLayout android:id="@+id/header"
@@ -29,7 +29,7 @@
 	<!-- Footer Ends -->
 	
 	<!-- Login Form -->
-	<LinearLayout
+	<RelativeLayout
 	    android:orientation="vertical"
 	  	android:layout_width="match_parent"
 	  	android:layout_height="wrap_content"
@@ -37,47 +37,58 @@
 	  	android:layout_below="@id/header">
   		<!--  Email Label -->
 	  	<TextView android:id="@+id/text_view_email"
-	  	    android:layout_width="fill_parent"
+	  	    android:layout_width="wrap_content"
 	  	    android:layout_height="wrap_content"
-	  		android:textColor="#372c24"
+	  	    android:layout_marginTop="30dp"
+	  	    android:layout_alignParentRight="true"
+	  		android:textColor="@color/black"
 	  		android:text="@string/email"/>
 	  	<EditText android:id="@+id/edit_text_email"
-	  	    android:layout_width="fill_parent"
-	  		android:layout_height="wrap_content"
-	  		android:layout_marginTop="5dip"
-	  		android:layout_marginBottom="20dip"
+	  	    android:layout_width="230dp"
+	  		android:layout_height="35dp"
+	  		android:layout_marginRight="15dp"
+	  		android:layout_toLeftOf="@id/text_view_email"
+	  		android:layout_alignBaseline="@id/text_view_email"
 	  		android:inputType="textEmailAddress"
 	  		android:singleLine="true"/>
 	  	<!--  Password Label -->
 	  	<TextView android:id="@+id/text_view_password"
-	  	    android:layout_width="fill_parent"
+	  	    android:layout_width="wrap_content"
 	  		android:layout_height="wrap_content"
-	  		android:textColor="#372c24"
+	  		android:layout_alignParentRight="true"
+	  		android:layout_below="@id/text_view_email"
+	  		android:layout_marginTop="40dp"
+	  		android:textColor="@color/black"
 	  		android:text="@string/password"/>
 	  	<EditText android:id="@+id/edit_text_password"
-	  	    android:layout_width="fill_parent"
-	  		android:layout_height="wrap_content"
-	  		android:layout_marginTop="5dip"
+	  	    android:layout_width="230dp"
+	  		android:layout_height="35dp"
+	  		android:layout_toLeftOf="@id/text_view_password"
+	  		android:layout_alignBaseline="@id/text_view_password"
+	  		android:layout_alignRight="@id/edit_text_email"
 	  		android:singleLine="true"
 	  		android:inputType="textPassword" />
 	  <!-- Login button -->	
-	  <Button android:id="@+id/btn_login" 
-	  		android:layout_width="fill_parent"
+	  <ImageButton android:id="@+id/btn_login" 
+	  		android:layout_width="wrap_content"
 	  		android:layout_height="wrap_content"
-	  		android:layout_marginTop="10dip"
-	  		android:text="@string/login"/>
+	  		android:layout_centerInParent="true"
+	  		android:layout_below="@id/text_view_password"
+	  		android:layout_marginTop="30dip"
+	  		android:src="@drawable/enter_btn"
+	  		android:contentDescription="@string/login"/>
 	  <!-- Link to Registration Screen -->		
 	  <TextView android:id="@+id/text_view_link_to_register" 
-	  		android:layout_width="fill_parent"
+	  		android:layout_width="wrap_content"
 	  		android:layout_height="wrap_content"
 	  		android:layout_marginTop="40dip"
-	  		android:layout_marginBottom="40dip"
+	  		android:layout_below="@id/btn_login"
 	  		android:text="@string/link_to_register"
-	  		android:gravity="center"
-	  		android:textSize="20sp"
-	  		android:textColor="#0b84aa"/>
+	  		android:layout_centerInParent="true"
+	  		android:textSize="15sp"
+	  		android:textColor="@color/black"/>
 	    
-	</LinearLayout>
+	</RelativeLayout>
  		<!-- Login Form Ends --> 		
  		
 </RelativeLayout>

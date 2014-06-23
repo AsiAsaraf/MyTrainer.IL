@@ -8,7 +8,7 @@ public class UserPreferences {
 		private int goal;
 		private int length;
 		private String level;
-		private String muscleFocus;
+		private int muscleFocus;
 		private Boolean phase1;
 		private Boolean phase2;
 		private String schedule;
@@ -85,14 +85,14 @@ public class UserPreferences {
 		/**
 		 * @return the muscleFocus
 		 */
-		public String getMuscleFocus() {
+		public int getMuscleFocus() {
 			return muscleFocus;
 		}
 		/**
-		 * @param muscleFocus the muscleFocus to set
+		 * @param position the muscleFocus to set
 		 */
-		public void setMuscleFocus(String muscleFocus) {
-			this.muscleFocus = muscleFocus;
+		public void setMuscleFocus(int position) {
+			this.muscleFocus = position;
 		}
 		/**
 		 * @return the phase1

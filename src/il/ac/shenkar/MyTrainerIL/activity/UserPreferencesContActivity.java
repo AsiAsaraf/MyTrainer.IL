@@ -3,6 +3,7 @@ package il.ac.shenkar.MyTrainerIL.activity;
 import il.ac.shenkar.MyTrainerIL.R;
 import il.ac.shenkar.MyTrainerIL.dao.UserPreferencesDao;
 import il.ac.shenkar.MyTrainerIL.entities.UserPreferences;
+import il.ac.shenkar.MyTrainerIL.utils.AppUtils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -55,9 +56,9 @@ public class UserPreferencesContActivity extends Activity{
         userPreferences.setGoal(intent.getIntExtra("goal", 0));
         userPreferences.setLength(intent.getIntExtra("length", 0));
         userPreferences.setLevel(intent.getStringExtra("level"));
-        userPreferences.setMuscleFocus(intent.getStringExtra("muscleFocus"));
+        userPreferences.setMuscleFocus(intent.getIntExtra("muscleFocus", 0));
         userPreferences.setPhase1(intent.getBooleanExtra("phase1", false));
-        userPreferences.setPhase1(intent.getBooleanExtra("phase2", false));
+        userPreferences.setPhase2(intent.getBooleanExtra("phase2", false));
         
         /**
          * Defining all layout items
@@ -97,7 +98,7 @@ public class UserPreferencesContActivity extends Activity{
 	    btnCreate.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View view) {
-	        	userPreferencesDao.scheduleBoolToString(userPreferences);
+	        	AppUtils.scheduleBoolToString(userPreferences);
 	        	long userPreferencesId = userPreferencesDao.createUserPrefrences(userPreferences);
 	        	userPreferences.setId(userPreferencesId);
 	        	userPreferencesDao.calcTrainingPlan(userPreferences);

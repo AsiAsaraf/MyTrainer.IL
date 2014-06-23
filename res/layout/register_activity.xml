@@ -4,7 +4,7 @@
   	android:layout_width="fill_parent"
   	android:layout_height="fill_parent"
   	android:fillViewport="true"
-  	android:background="#fff">
+  	android:background="@drawable/background">
   		
   	<!--  Header  Starts-->
   	<LinearLayout android:id="@+id/header"
@@ -49,13 +49,14 @@
 		        android:orientation="vertical">
  		  			<TextView android:layout_width="fill_parent"
 				  		android:layout_height="wrap_content"
-				  		android:textColor="#372c24"
+				  		android:textColor="@color/black"
 				  		android:text="@string/last_name"/>
 				  	<EditText android:id="@+id/edit_text_last_name" 
 				  		android:layout_width="fill_parent"
 				  		android:layout_height="wrap_content"
 				  		android:layout_marginTop="5dip"
 				  		android:inputType="text"
+				  		android:textColor="@color/black"
 				  		android:singleLine="true"/>
 			</LinearLayout>
       		<LinearLayout android:layout_width="fill_parent"
@@ -65,20 +66,21 @@
   				  	<TextView android:id="@+id/text_view_first_name"
   				  	    android:layout_width="fill_parent"
 				  		android:layout_height="wrap_content"
-				  		android:textColor="#372c24"
+				  		android:textColor="@color/black"
 				  		android:text="@string/first_name"/>
 				  <EditText android:id="@+id/edit_text_first_name" 
 				  		android:layout_width="fill_parent"
 				  		android:layout_height="wrap_content"
 				  		android:layout_marginTop="5dip"
 				  		android:inputType="text"
+				  		android:textColor="@color/black"
 				  		android:singleLine="true"/>
 			  </LinearLayout>
 	  </LinearLayout>
 	  <!--  Email Label -->
 	  <TextView android:layout_width="fill_parent"
 	      android:layout_height="wrap_content"
-	      android:textColor="#372c24"
+	      android:textColor="@color/black"
 	      android:text="@string/email"/>
 	  <EditText android:id="@+id/edit_text_email"
 	      android:layout_width="fill_parent"
@@ -86,17 +88,19 @@
 	      android:layout_marginTop="5dip"
 	      android:singleLine="true"
 	      android:inputType="textEmailAddress"
+	      android:textColor="@color/black"
 	      android:layout_marginBottom="20dip"/>
 	  <!-- Password Label -->
 	  <TextView android:layout_width="fill_parent"
 	      android:layout_height="wrap_content"
-	      android:textColor="#372c24"
+	      android:textColor="@color/black"
 	      android:text="@string/password"/>
 	  <EditText android:id="@+id/edit_text_password" 
 	      android:layout_width="fill_parent"
 	      android:layout_height="wrap_content"
 	      android:inputType="textPassword"
 	      android:singleLine="true"
+	      android:textColor="@color/black"
 	      android:layout_marginTop="5dip"/>
 	  <!-- Register Button -->		
 	  <Button android:id="@+id/btnRegister" 
@@ -113,7 +117,7 @@
 	      android:text="@string/link_to_login"
 	      android:gravity="center"
 	      android:textSize="20sp"
-	      android:textColor="#025f7c"/>
+	      android:textColor="@color/black"/>
 		    
 	</LinearLayout>
 	<!-- Registration Form Ends -->

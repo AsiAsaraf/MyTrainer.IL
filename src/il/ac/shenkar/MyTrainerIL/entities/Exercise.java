@@ -8,7 +8,7 @@ public class Exercise {
 		private String name;
 		private String description;
 		private String difficulty;
-		private String category;
+		private int category;
 		private int length;
 		private Boolean goal1;
 		private Boolean goal2;
@@ -75,14 +75,14 @@ public class Exercise {
 		/**
 		 * @return the category
 		 */
-		public String getCategory() {
+		public int getCategory() {
 			return category;
 		}
 	
 		/**
 		 * @param category the category to set
 		 */
-		public void setCategory(String category) {
+		public void setCategory(int category) {
 			this.category = category;
 		}
 	

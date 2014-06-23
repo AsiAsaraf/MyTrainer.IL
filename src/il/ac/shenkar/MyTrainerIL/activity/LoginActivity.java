@@ -10,8 +10,8 @@ import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,17 +24,16 @@ public class LoginActivity extends Activity {
 	private EditText inputEmail;
 	private EditText inputPassword;
 	
-	private Button btnLogin;
+	private ImageButton btnLogin;
 	private TextView register;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
-        Intent intent = getIntent();
+    	super.onCreate(savedInstanceState);
         context = this;
         loginDao = new LoginDao(context);
-        
+    	Intent intent = getIntent();
+    	
         long userId = intent.getLongExtra("user", 0);
         if(userId == 0){
         	userId = loginDao.getLogin();
@@ -45,13 +44,18 @@ public class LoginActivity extends Activity {
             finish();
         	}
         }
+           	
+    	
+        setContentView(R.layout.login_activity);
         
+
+
         /**
          * Defining all layout items
          **/
         inputEmail = (EditText)findViewById(R.id.edit_text_email);
         inputPassword = (EditText)findViewById(R.id.edit_text_password);
-        btnLogin = (Button)findViewById(R.id.btn_login);
+        btnLogin = (ImageButton)findViewById(R.id.btn_login);
         register = (TextView)findViewById(R.id.text_view_link_to_register);
         
         /**

@@ -2,43 +2,40 @@
 <RelativeLayout android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:fillViewport="true"
-  android:background="#ffffff" xmlns:android="http://schemas.android.com/apk/res/android">
-   <TextView
-       android:id="@+id/textView1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_marginBottom="50dp"
-       android:text="@string/main_activity" />
-    <Button
+  android:background="@drawable/background" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageButton
        android:id="@+id/btn_create_trainig_plan"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_below="@+id/textView1"
        android:layout_centerHorizontal="true"
-       android:layout_marginBottom="50dp"
-       android:text="@string/create_training_plan" />
-    <Button
+       android:layout_marginTop="20dp"
+       android:layout_marginBottom="20dp"
+       android:src="@drawable/create_training_plan_btn"
+       android:contentDescription="@string/create_training_plan" />
+	<ImageButton
+       android:id="@+id/btn_update_training_plan"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:layout_below="@+id/btn_create_trainig_plan"
+       android:layout_marginBottom="20dp"
+       android:src="@drawable/update_training_plan_btn"
+       android:contentDescription="@string/update_training_plan" />
+    <ImageButton
        android:id="@+id/btn_enter_trainig_plan"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_below="@+id/btn_create_trainig_plan"
+       android:layout_below="@+id/btn_update_training_plan"
        android:layout_centerHorizontal="true"
-       android:layout_marginBottom="50dp"
-       android:text="@string/enter_training_plan" />
-   <Button
-       android:id="@+id/btn_settings"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_centerHorizontal="true"
-       android:layout_below="@+id/btn_enter_trainig_plan"
-       android:layout_marginBottom="50dp"
-       android:text="@string/settings" />
-
+       android:layout_marginBottom="20dp"
+       android:src="@drawable/enter_training_plan_btn"
+       android:contentDescription="@string/enter_training_plan" />
    <Button
        android:id="@+id/btn_logout"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_below="@+id/btn_settings"
+       android:layout_below="@+id/btn_enter_trainig_plan"
        android:layout_centerHorizontal="true"
        android:text="@string/logout" />
 

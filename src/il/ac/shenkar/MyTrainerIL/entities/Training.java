@@ -1,5 +1,6 @@
 package il.ac.shenkar.MyTrainerIL.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Training {
@@ -12,7 +13,7 @@ public class Training {
 		private String executeTime;
 		private int length;
 		private String reminder;
-		private List<ExerciseTraining> exerciseTrainingList;
+		private ArrayList<ExerciseTraining> exerciseTrainingList;
 		
 	//private flags
 		private int	doneFlag;
@@ -90,15 +91,15 @@ public class Training {
 		/**
 		 * @return the exerciseTrainnigList
 		 */
-		public List<ExerciseTraining> getExerciseTrainingList() {
+		public ArrayList<ExerciseTraining> getExerciseTrainingList() {
 			return exerciseTrainingList;
 		}
 
 		/**
-		 * @param exerciseTrainnigList the exerciseList to set
+		 * @param exerciseTrainingList the exerciseList to set
 		 */
-		public void setExerciseTrainngList(List<ExerciseTraining> exerciseTrainnigList) {
-			this.exerciseTrainingList = exerciseTrainnigList;
+		public void setExerciseTrainngList(ArrayList<ExerciseTraining> exerciseTrainingList) {
+			this.exerciseTrainingList = exerciseTrainingList;
 		}
 
 		/**

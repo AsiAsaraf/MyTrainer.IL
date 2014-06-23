@@ -2,7 +2,6 @@ package il.ac.shenkar.MyTrainerIL.dao;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Random;
 import java.util.TimeZone;
 
@@ -48,8 +47,8 @@ public class UserPreferencesDao {
 		trainingPlan.setUser(databaseHelper.getUser(userPreferences.getUserId()));
 		long trainingPlan_id = databaseHelper.createTrainingPlan(trainingPlan);
 		trainingPlan.setId(trainingPlan_id);
-		List<Training> trainingList = new ArrayList<Training>();
-		List<ExerciseTraining> userExerciseTrainingList = databaseHelper.getExerciseTrainingListByUserPref(userPreferences);
+		ArrayList<Training> trainingList = new ArrayList<Training>();
+		ArrayList<ExerciseTraining> userExerciseTrainingList = databaseHelper.getExerciseTrainingArrayListByUserPref(userPreferences);
 		String schedule = userPreferences.getSchedule();
 		String[] s1 = schedule.split("");
 		int sum = 0;
@@ -61,34 +60,61 @@ public class UserPreferencesDao {
 		int trainingsNum = 4*sum;
 		for(int i=0; i<=trainingsNum;i++){
 			Training training = new Training();
-			List<ExerciseTraining> exerciseTrainingList = new ArrayList<ExerciseTraining>();
-			training.setName(context.getResources().getString(R.string.training_num));
+			ExerciseTraining exerciseTrainingPhase2 = null;
+			ArrayList<ExerciseTraining> exerciseTrainingList = new ArrayList<ExerciseTraining>();
 			long training_id = databaseHelper.createTraining(training);
 			training.setId(training_id);
 			if (userExerciseTrainingList != null){
 				int trainingLength = 0;
-				while (userPreferences.getLength() >= trainingLength){
+				ArrayList<Integer> indexList = new ArrayList<Integer>();
+				if((userPreferences.getPhase1()!= null) && (userPreferences.getPhase1())){
+					ArrayList<ExerciseTraining> exerciseTrainingArrayListByPhase1 = databaseHelper.getExerciseTrainingArrayListByPhase1(userPreferences);
 					Random randomGenerator = new Random();
-					int index = randomGenerator.nextInt(userExerciseTrainingList.size());
-					ExerciseTraining exerciseTraining = userExerciseTrainingList.get(index);
+					int index = randomGenerator.nextInt(exerciseTrainingArrayListByPhase1.size());
+					ExerciseTraining exerciseTraining = exerciseTrainingArrayListByPhase1.get(index);
 					trainingLength += exerciseTraining.getExercise().getLength();
-					exerciseTraining.setTraining(training);
+					exerciseTraining.setTrainingId(training.getId());
 					exerciseTrainingList.add(exerciseTraining);
 					databaseHelper.createExerciseTraining(exerciseTraining);
 				}
-			training.setExerciseTrainngList(exerciseTrainingList);
-			training.setLength(trainingLength);
-			training.setTrainingPlanId(trainingPlan.getId());
-			databaseHelper.updateTraining(training);
-			trainingList.add(training);
-		}
-			
+				if((userPreferences.getPhase2()!= null) && (userPreferences.getPhase2())){
+					ArrayList<ExerciseTraining> exerciseTrainingArrayListByPhase2 = databaseHelper.getExerciseTrainingArrayListByPhase2(userPreferences);
+					Random randomGenerator = new Random();
+					int index = randomGenerator.nextInt(exerciseTrainingArrayListByPhase2.size());
+					exerciseTrainingPhase2 = exerciseTrainingArrayListByPhase2.get(index);
+					trainingLength += exerciseTrainingPhase2.getExercise().getLength();
+					exerciseTrainingPhase2.setTrainingId(training.getId());
+				}
+				while (userPreferences.getLength() >= trainingLength){
+					Random randomGenerator = new Random();
+					int index = randomGenerator.nextInt(userExerciseTrainingList.size());
+					if((indexList == null) || (indexList.isEmpty()) || (!indexList.contains(index))){
+						ExerciseTraining exerciseTraining = userExerciseTrainingList.get(index);
+						trainingLength += exerciseTraining.getExercise().getLength();
+						exerciseTraining.setTrainingId(training.getId());
+						indexList.add(index);
+						exerciseTrainingList.add(exerciseTraining);
+						databaseHelper.createExerciseTraining(exerciseTraining);
+					}
+				}
+				if((userPreferences.getPhase2()!= null) && (userPreferences.getPhase2()) && exerciseTrainingPhase2 != null){
+					exerciseTrainingList.add(exerciseTrainingPhase2);
+					databaseHelper.createExerciseTraining(exerciseTrainingPhase2);
+				}
+				training.setExerciseTrainngList(exerciseTrainingList);
+				//TODO - execute time + reminder
+				training.setName(context.getResources().getString(R.string.training_num) + " " + training.getId());
+				training.setLength(trainingLength);
+				training.setTrainingPlanId(trainingPlan.getId());
+				databaseHelper.updateTraining(training);
+				trainingList.add(training);
+			}
 		}
 		trainingPlan.setTrainingList(trainingList);
 		databaseHelper.updateTrainingPlan(trainingPlan);
 		return trainingPlan;
 	}
-	
+	//TODO
 	public void addCalendarEvent(Context context, UserPreferences userPreferences) {
 		Calendar beginTime = Calendar.getInstance();
 	    beginTime.set(2013, 12, 20, 7, 30);
@@ -109,76 +135,5 @@ public class UserPreferencesDao {
 	    // the newly-inserted event, including its id
 	    int id = Integer.parseInt(uri.getLastPathSegment());
 	    Toast.makeText(context, "Created Calendar Event " + id, Toast.LENGTH_SHORT).show();
-	}
-	
-	public void scheduleBoolToString(UserPreferences userPreferences){
-		String  schedule  = new String();
-		
-		if(userPreferences.getSunday()!=null){
-			schedule = "1"; 
-		} else
-			schedule = "0";
-		if(userPreferences.getMonday()!=null){
-			schedule = schedule + "1"; 
-		} else
-			schedule = schedule + "0";
-		if(userPreferences.getTuesday()!=null){
-			schedule = schedule + "1"; 
-		} else
-			schedule = schedule + "0";
-		if(userPreferences.getWednesday()!=null){
-			schedule = schedule + "1"; 
-		} else
-			schedule = schedule + "0";
-		if(userPreferences.getThursday()!=null){
-			schedule = schedule + "1"; 
-		} else
-			schedule = schedule + "0";
-		if(userPreferences.getFriday()!=null){
-			schedule = schedule + "1"; 
-		} else
-			schedule = schedule + "0";
-		if(userPreferences.getSaturday()!=null){
-			schedule = schedule + "1"; 
-		} else
-			schedule = schedule + "0";
-		
-		userPreferences.setSchedule(schedule);
-	}
-	
-	public void scheduleStringToBool(UserPreferences userPreferences){
-		if(userPreferences.getSchedule()!= null){
-			String schedule = userPreferences.getSchedule();
-			String[] parts = schedule.split("");
-			if(parts[0]=="1"){
-				userPreferences.setSunday(true);
-			} else 
-				userPreferences.setSunday(false);
-			if(parts[1]=="1"){
-				userPreferences.setMonday(true);
-			} else 
-				userPreferences.setMonday(false);
-			if(parts[2]=="1"){
-				userPreferences.setTuesday(true);
-			} else 
-				userPreferences.setTuesday(false);
-			if(parts[3]=="1"){
-				userPreferences.setWednesday(true);
-			} else 
-				userPreferences.setWednesday(false);
-			if(parts[4]=="1"){
-				userPreferences.setTuesday(true);
-			} else 
-				userPreferences.setThursday(false);
-			if(parts[5]=="1"){
-				userPreferences.setFriday(true);
-			} else 
-				userPreferences.setFriday(false);
-			if(parts[6]=="1"){
-				userPreferences.setSaturday(true);
-			} else 
-				userPreferences.setSaturday(false);
-		}
-		
 	}
 }

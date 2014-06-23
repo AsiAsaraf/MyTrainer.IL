@@ -29,6 +29,7 @@
 	
     <!-- main activity strings -->
     <string name="create_training_plan">צור תכנית אימונים</string>
+    <string name="update_training_plan">עדכן תכנית אימונים</string>
     <string name="enter_training_plan">תכנית האימונים שלי</string>
     <string name="settings">הגדרות</string>
 	
@@ -41,6 +42,7 @@
 	<!-- training activity strings -->
 	<string name="col_exercise_num">מספר</string>
 	<string name="col_exercise_name">תרגיל</string>
+	<string name="col_exercise_length">אורך</string>
 	<string name="col_exercise_training">שייך לאימון</string>
 	
 	<string name="training_num">אימון מספר</string>
@@ -70,13 +72,12 @@
 	        <item>קשה</item>
 	        <item>קשה מאוד</item>
     	</string-array>
-	<string name="muscle_focus">התמקדות שרירים באימון</string>
+	<string name="muscle_focus">התמקדות באימון</string>
 		<string-array name="array_muscle_focus">
 	        <item>מאוזן</item>
-	        <item>ידיים</item>
+	        <item>פלג גוף עליון</item>
 	        <item>בטן</item>
-	        <item>רגליים</item>
-	        <item>גב</item>
+	        <item>פלג גוף תחתון</item>
     	</string-array>	
 	<string name="phases">תוספות לאימון</string>
 		<string name="phases1">כלול חימום</string>

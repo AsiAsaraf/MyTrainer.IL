@@ -3,7 +3,7 @@ package il.ac.shenkar.MyTrainerIL.entities;
 public class ExerciseTraining {
 	//private variables
 		private Exercise exercise;
-		private Training training;
+		private long trainingId;
 		
 	//private flags
 		private int	doneFlag;
@@ -25,15 +25,15 @@ public class ExerciseTraining {
 		/**
 		 * @return the training
 		 */
-		public Training getTraining() {
-			return training;
+		public long getTrainingId() {
+			return trainingId;
 		}
 
 		/**
 		 * @param training the training to set
 		 */
-		public void setTraining(Training training) {
-			this.training = training;
+		public void setTrainingId(long trainingId) {
+			this.trainingId = trainingId;
 		}
 
 		/**

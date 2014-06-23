@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
 	
@@ -17,9 +18,9 @@ public class MainActivity extends Activity {
 	
 	//Defining layout items
 	private Button btnLogout;
-	private Button btnSettings;
-	private Button btnCreateTrainingPlan;
-	private Button btnEnterTrainingPlan;
+	private ImageButton btnUpdateTrainingPlan;
+	private ImageButton btnCreateTrainingPlan;
+	private ImageButton btnEnterTrainingPlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +45,9 @@ public class MainActivity extends Activity {
          * Defining all layout items
          **/
         btnLogout = (Button)findViewById(R.id.btn_logout);
-        btnSettings = (Button)findViewById(R.id.btn_settings);
-        btnCreateTrainingPlan = (Button)findViewById(R.id.btn_create_trainig_plan);
-        btnEnterTrainingPlan = (Button)findViewById(R.id.btn_enter_trainig_plan);
+        btnUpdateTrainingPlan = (ImageButton)findViewById(R.id.btn_update_training_plan);
+        btnCreateTrainingPlan = (ImageButton)findViewById(R.id.btn_create_trainig_plan);
+        btnEnterTrainingPlan = (ImageButton)findViewById(R.id.btn_enter_trainig_plan);
         
         /**
          * Logout Button click event.
@@ -64,7 +65,7 @@ public class MainActivity extends Activity {
         /**
          * Settings Button click event.
          **/
-        btnSettings.setOnClickListener(new View.OnClickListener() {
+        btnUpdateTrainingPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), SettingsActivity.class);

@@ -1,5 +1,6 @@
 package il.ac.shenkar.MyTrainerIL.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrainingPlan {
@@ -9,7 +10,7 @@ public class TrainingPlan {
 		private long id;
 		private User user;
 		private String name;
-		private List<Training> trainingList;
+		private ArrayList<Training> trainingList;
 		/**
 		 * @return the id
 		 */
@@ -49,13 +50,13 @@ public class TrainingPlan {
 		/**
 		 * @return the trainingList
 		 */
-		public List<Training> getTrainingList() {
+		public ArrayList<Training> getTrainingList() {
 			return trainingList;
 		}
 		/**
 		 * @param trainingList the trainingList to set
 		 */
-		public void setTrainingList(List<Training> trainingList) {
+		public void setTrainingList(ArrayList<Training> trainingList) {
 			this.trainingList = trainingList;
 		}
 

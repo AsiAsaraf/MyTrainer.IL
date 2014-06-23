@@ -3,12 +3,12 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:fillViewport="true"
-  android:background="#ffffff">
+  android:background="@drawable/background">
   				
 	<TextView android:id="@+id/text_view_goal"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:textColor="#372c24"
+		android:textColor="@color/black"
 		android:layout_marginTop="10dp"
 		android:text="@string/goal"/>
   	<RadioGroup android:id="@+id/radio_group_goal"
@@ -21,7 +21,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/goal1"
-	        android:textColor="#372c24"
+	        android:textColor="@color/black"
 	        android:textSize="12sp"
 	        android:layout_marginTop="10dp"
 	        android:button="@null"
@@ -31,7 +31,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/goal2"
-	        android:textColor="#372c24"
+	        android:textColor="@color/black"
 	        android:textSize="12sp"
 	        android:layout_marginTop="10dp"
 	        android:button="@null"
@@ -41,7 +41,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/goal3"
-	        android:textColor="#372c24"
+	        android:textColor="@color/black"
 	        android:textSize="12sp"
 	        android:layout_marginTop="10dp"
 	        android:button="@null"
@@ -52,7 +52,7 @@
 	    android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/radio_group_goal"
-		android:textColor="#372c24"
+		android:textColor="@color/black"
 		android:layout_marginTop="10dp"
 		android:text="@string/level"/>
 	<Spinner android:id="@+id/spinner_level"
@@ -65,7 +65,7 @@
 		android:layout_width="fill_parent"
   		android:layout_height="wrap_content"
   		android:layout_below="@+id/spinner_level"
-  		android:textColor="#372c24"
+  		android:textColor="@color/black"
   		android:layout_marginTop="10dp"
   		android:text="@string/muscle_focus"/>
 	<Spinner android:id="@+id/spinner_muscle_focus"
@@ -78,7 +78,7 @@
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/spinner_muscle_focus"
 		android:gravity="left"
-		android:textColor="#372c24"
+		android:textColor="@color/black"
 		android:layout_marginTop="10dp"
 		android:text="@string/length"/>
    	<NumberPicker android:id="@+id/number_picker_length"
@@ -92,7 +92,7 @@
   		android:layout_height="wrap_content"
   		android:layout_alignBaseline="@+id/text_view_length"
   		android:gravity="right"
-  		android:textColor="#372c24"
+  		android:textColor="@color/black"
   		android:layout_marginTop="10dp"
   		android:text="@string/phases"/>
 	<CheckBox
@@ -106,7 +106,7 @@
 	    android:drawableRight="@drawable/checkbox_selector"
 	    android:onClick="onCheckboxClicked"
 	    android:text="@string/phases1"
-	    android:textColor="#372c24" />
+	    android:textColor="@color/black" />
 	<CheckBox
 	    android:id="@+id/checkbox_phases2"
 	    android:layout_width="wrap_content"
@@ -118,12 +118,12 @@
 	    android:drawableRight="@drawable/checkbox_selector"
 	    android:onClick="onCheckboxClicked"
 	    android:text="@string/phases2"
-	    android:textColor="#372c24" />
+	    android:textColor="@color/black" />
 	<Button
 	    android:id="@+id/button_next"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentBottom="true"
 	    android:text="@string/next"
-	    android:textColor="#372c24" />
+	    android:textColor="@color/black" />
 </RelativeLayout>
