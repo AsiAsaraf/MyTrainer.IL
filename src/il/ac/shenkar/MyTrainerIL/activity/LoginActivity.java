@@ -1,12 +1,12 @@
 package il.ac.shenkar.MyTrainerIL.activity;
 
 import il.ac.shenkar.MyTrainerIL.dao.LoginDao;
+import il.ac.shenkar.MyTrainerIL.utils.AppUtils;
 import il.ac.shenkar.MyTrainerIL.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -86,23 +86,20 @@ public class LoginActivity extends Activity {
                         startActivityForResult(myIntent, 0);
                         finish();
                 	} else {
-                		Toast.makeText(getApplicationContext(), "Login failed, Please try again", Toast.LENGTH_SHORT).show();
+                		Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_failed), Toast.LENGTH_SHORT).show();
                 	}
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(), "One or more fields are empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.verify), Toast.LENGTH_SHORT).show();
                 }
             }
         });
        
     }
-
-
+    
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    public void onBackPressed() {
+    	AppUtils.onButtonBackPressed(this);
     }
 }

@@ -1,12 +1,28 @@
 package il.ac.shenkar.MyTrainerIL.entities;
 
 public class ExerciseTraining {
+	
 	//private variables
+		private long id;
 		private Exercise exercise;
 		private long trainingId;
 		
 	//private flags
 		private int	doneFlag;
+
+		/**
+		 * @return the id
+		 */
+		public long getId() {
+			return id;
+		}
+
+		/**
+		 * @param id the id to set
+		 */
+		public void setId(long id) {
+			this.id = id;
+		}
 
 		/**
 		 * @return the exercise

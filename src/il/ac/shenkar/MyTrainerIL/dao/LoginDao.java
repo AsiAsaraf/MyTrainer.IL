@@ -36,8 +36,7 @@ public class LoginDao {
 	
 	public Boolean deleteLogin() {
 		long user_id = databaseHelper.getLogin();
-		if(user_id != 0 ) {
-			databaseHelper.deleteLogin(user_id);
+		if((user_id != 0) && (databaseHelper.deleteLogin(user_id))) {
 			return true;
 		} else {
 			return false;

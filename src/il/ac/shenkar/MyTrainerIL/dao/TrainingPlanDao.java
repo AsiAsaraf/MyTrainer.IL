@@ -15,10 +15,23 @@ public class TrainingPlanDao {
 		databaseHelper = new DatabaseHelper(context);
 	}
 
-	public TrainingPlan getTrainingPlanByUser(){
-		long user_id = databaseHelper.getLogin();
+	public TrainingPlan getTrainingPlanByUser(long user_id){
+		if(user_id == 0){
+			user_id = databaseHelper.getLogin();
+		}
 		TrainingPlan trainingPlan = databaseHelper.getTrainingPlanByUser(user_id);
-		return trainingPlan;
+		if(trainingPlan != null){
+			return trainingPlan;
+		} else {
+			return null;
+		}
+	}
+	
+	public Boolean deleteTrainingPlanByUser(long user_id){
+		if(user_id == 0){
+			user_id = databaseHelper.getLogin();
+		}
+		return(databaseHelper.deleteTrainingPlanByUser(user_id));
 	}
 
 }

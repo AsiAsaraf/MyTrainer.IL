@@ -2,8 +2,6 @@ package il.ac.shenkar.MyTrainerIL.entities;
 
 public class User {
 
-	private static final long serialVersionUID = 1L;
-	
 	//private variables
 		private long id;
 		private String firstName;

@@ -1,50 +1,27 @@
 package il.ac.shenkar.MyTrainerIL.reminder;
 
+import il.ac.shenkar.MyTrainerIL.R;
+import il.ac.shenkar.MyTrainerIL.activity.TrainingActivity;
 import android.app.*;
 import android.content.*;
-import android.location.LocationManager;
-import android.widget.Toast;
+import android.support.v4.app.NotificationCompat;
 
 public class ReminderBroadcastReceiver extends BroadcastReceiver
 {
-	
 	// on receive method
 		public void onReceive(Context context, Intent intent)
 		{
-/*			Intent myIntent = new Intent(context, MainActivity.class);
-			int id = intent.getIntExtra(CreateTaskActivity.EXTRA_ID, -1);
-			String name = intent.getStringExtra(CreateTaskActivity.EXTRA_NAME);
-			String action = intent.getAction();
+			Intent myIntent = new Intent(context, TrainingActivity.class);
+			long training_id = intent.getLongExtra("training", 0);
+			myIntent.putExtra("training", training_id);
 			PendingIntent pendingIntent = null;
-			LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+			pendingIntent = PendingIntent.getActivity(context, (int)training_id, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 			
-			if (action.equals("il.ac.shenkar.MyTrainerIL.reminderByTime_broadcast"))
-			{ // set time reminder
-				pendingIntent = PendingIntent.getActivity(context, id, myIntent, 0);
-			}
-	
-			if (action.equals("il.ac.shenkar.MyTrainerIL.reminderByLocation_broadcast"))
-			{ // set location reminder
-				final String key = LocationManager.KEY_PROXIMITY_ENTERING;	// enter = true	,	exit = false
-				final Boolean entering = intent.getBooleanExtra(ReminderHandler.EXTRA_ENTERING, false); // what the user chose = Arrive or Leave
-	
-				if (key.equals("entering") && entering)
-				{ // the reminder will take place when device enters the location 
-					Toast.makeText(context, "entering", Toast.LENGTH_SHORT).show();
-					pendingIntent = PendingIntent.getActivity(context, id, myIntent, 0);
-					locationManager.removeUpdates(pendingIntent);
-				} 
-				else
-				{  // the reminder will take place when device exits the location 
-					Toast.makeText(context, "exiting", Toast.LENGTH_SHORT).show();
-				}
-				
-			}
 			// build a notification
 			NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-			Notification notification = new NotificationCompat.Builder(context).setContentTitle("MyReminder").setContentText(name).setSmallIcon(R.drawable.ic_little_megaphone).setContentIntent(pendingIntent).build();
-			notification.flags |= Notification.FLAG_AUTO_CANCEL;
+			Notification notification = new NotificationCompat.Builder(context).setContentTitle("MyTrainer.IL").setContentText(context.getResources().getString(R.string.training)).setSmallIcon(R.drawable.megaphone).setContentIntent(pendingIntent).build();
+		    notification.flags |= Notification.FLAG_AUTO_CANCEL;
 			notification.defaults = Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND;
-			notificationManager.notify(id, notification);	*/
+			notificationManager.notify((int)training_id, notification);	
 		}
 }

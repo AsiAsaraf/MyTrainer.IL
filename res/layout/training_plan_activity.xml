@@ -1,25 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background" >
-	<TableLayout
-		android:id="@+id/table_header_training_plan"
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:stretchColumns="*">
-	</TableLayout>
-	<ScrollView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-	   <TableLayout
-			android:id="@+id/table_layout_training_plan"
+    <ImageButton android:id="@+id/btn_menu"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="20dp"
+       android:text="@string/menu"
+       android:src="@drawable/menu_btn"
+       android:background="@null"
+       android:contentDescription="@string/menu"
+       android:onClick="showPopup" />   
+	<ImageView android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btn_menu"
+        android:layout_toRightOf="@+id/btn_menu"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/little_logo" />
+    <RelativeLayout android:id="@+id/relative_layout_table"
+        android:layout_width="350dp"
+    	android:layout_height="330dp"
+    	android:layout_marginTop="20dp"
+    	android:layout_below="@id/logo"
+    	android:layout_centerHorizontal="true"
+    	android:background="@drawable/table_background">
+		<TableLayout android:id="@+id/table_header_training_plan"
 			android:layout_height="wrap_content"
-			android:layout_width="match_parent"
+			android:layout_width="320dp"
+			android:layout_centerHorizontal="true"
+			android:layout_marginRight="10dp"
+			android:layout_marginTop="10dp"
 			android:stretchColumns="*">
-	    </TableLayout>
-	</ScrollView>
-</LinearLayout>
+		</TableLayout>
+	   	<ScrollView android:layout_below="@id/table_header_training_plan"
+	   	    android:layout_width="wrap_content"
+	   	    android:layout_height="wrap_content"
+        	android:layout_centerHorizontal="true" >
+			<TableLayout android:id="@+id/table_layout_training_plan"
+				android:layout_height="wrap_content"
+				android:layout_width="310dp"
+				android:layout_marginRight="10dp"
+				android:stretchColumns="*">
+			</TableLayout>
+		</ScrollView>
+	</RelativeLayout>
+
+
+</RelativeLayout>
 
 

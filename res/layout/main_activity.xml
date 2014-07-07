@@ -3,15 +3,34 @@
   android:layout_height="fill_parent"
   android:fillViewport="true"
   android:background="@drawable/background" xmlns:android="http://schemas.android.com/apk/res/android">
-
+   <ImageButton android:id="@+id/btn_menu"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="15dp"
+       android:text="@string/menu"
+       android:src="@drawable/menu_btn"
+       android:background="@null"
+       android:contentDescription="@string/menu"
+       android:onClick="showPopup" />
+	<ImageView android:id="@+id/logo"
+	    android:src="@drawable/logo"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:contentDescription="@string/logo"
+		android:layout_below="@id/btn_menu"
+		android:layout_marginTop="20dp"
+		android:layout_centerHorizontal="true"/>    
     <ImageButton
        android:id="@+id/btn_create_trainig_plan"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_centerHorizontal="true"
-       android:layout_marginTop="20dp"
-       android:layout_marginBottom="20dp"
+       android:layout_below="@id/logo"
+       android:layout_marginTop="40dp"
        android:src="@drawable/create_training_plan_btn"
+       android:background="@null"
        android:contentDescription="@string/create_training_plan" />
 	<ImageButton
        android:id="@+id/btn_update_training_plan"
@@ -19,8 +38,9 @@
        android:layout_height="wrap_content"
        android:layout_centerHorizontal="true"
        android:layout_below="@+id/btn_create_trainig_plan"
-       android:layout_marginBottom="20dp"
+       android:layout_marginTop="40dp"
        android:src="@drawable/update_training_plan_btn"
+       android:background="@null"
        android:contentDescription="@string/update_training_plan" />
     <ImageButton
        android:id="@+id/btn_enter_trainig_plan"
@@ -28,15 +48,9 @@
        android:layout_height="wrap_content"
        android:layout_below="@+id/btn_update_training_plan"
        android:layout_centerHorizontal="true"
-       android:layout_marginBottom="20dp"
+       android:layout_marginTop="40dp"
        android:src="@drawable/enter_training_plan_btn"
+       android:background="@null"
        android:contentDescription="@string/enter_training_plan" />
-   <Button
-       android:id="@+id/btn_logout"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/btn_enter_trainig_plan"
-       android:layout_centerHorizontal="true"
-       android:text="@string/logout" />
 
 </RelativeLayout>

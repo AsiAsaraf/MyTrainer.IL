@@ -1,16 +1,16 @@
 package il.ac.shenkar.MyTrainerIL.entities;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 public class Training {
-	private static final long serialVersionUID = 1L;
 	
 	//private variables
 		private long id;
 		private long trainingPlanId;
 		private String name;
 		private String executeTime;
+		private Calendar executeDate;
 		private int length;
 		private String reminder;
 		private ArrayList<ExerciseTraining> exerciseTrainingList;
@@ -58,6 +58,21 @@ public class Training {
 		 */
 		public void setExecuteTime(String executeTime) {
 			this.executeTime = executeTime;
+		}
+
+		/**
+		 * @return the executeDate
+		 */
+		public Calendar getExecuteDate() {
+			return executeDate;
+		}
+
+		/**
+		 * @param executeDate the executeDate to set
+		 */
+		public void setExecuteDate(long timeInMiliSec) {
+			this.executeDate = Calendar.getInstance();
+			this.executeDate.setTimeInMillis(timeInMiliSec);
 		}
 
 		/**

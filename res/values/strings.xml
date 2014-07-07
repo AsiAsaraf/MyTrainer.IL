@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">פרויקט גמר</string>
+    <string name="app_name">MyTrainer.IL</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <!-- activity strings -->
@@ -15,6 +15,10 @@
     <string name="training_activity">מסך אימון</string>
     <string name="exercise_activity">מסך תרגיל</string>
     <string name="logo">לוגו</string>
+    <string name="menu">תפריט</string>
+    <string name="verify">אחד או יותר מהשדות ריקים או לא תקינים</string>
+    <string name="login_failed">הכניסה נכשלה, אנא נסה שוב</string>
+    <string name="register_failed">ההרשמה נכשלה, אנא נסה שוב</string>
     
     <!-- login and register activity strings -->
     <string name="first_name">שם פרטי</string>
@@ -25,19 +29,26 @@
 	<string name="link_to_register">אין לך חשבון\u200e?\u200e הרשם כאן</string>
 	<string name="register">הרשמה</string>
 	<string name="login">כניסה</string>
-	<string name="logout">יציאה</string>
+	<string name="logout">התנתק</string>
+	<string name="main">ראשי</string>
 	
     <!-- main activity strings -->
     <string name="create_training_plan">צור תכנית אימונים</string>
     <string name="update_training_plan">עדכן תכנית אימונים</string>
     <string name="enter_training_plan">תכנית האימונים שלי</string>
+    <string name="training">אימון</string>
     <string name="settings">הגדרות</string>
-	
+    <string name="on_back_button_title">אזהרה</string>
+	<string name="on_back_button_message">לצאת מהאפליקציה?</string>
+	<string name="yes">כן</string>
+	<string name="no">לא</string>
 	
 	
 	<!-- exercise activity strings -->
 	<string name="exercise_name">שם התרגיל</string>
 	<string name="exercise_description">תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל תיאור התרגיל</string>
+	<string name="exercise_back">אחורה</string>
+	<string name="exercise_next">קדימה</string>
 	
 	<!-- training activity strings -->
 	<string name="col_exercise_num">מספר</string>

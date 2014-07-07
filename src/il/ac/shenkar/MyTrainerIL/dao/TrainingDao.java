@@ -17,6 +17,14 @@ public class TrainingDao {
 
 	public Training getTrainingById(long training_id) {
 		Training training = databaseHelper.getTraining(training_id);
+		if(training != null){
+			return training;
+		}
 		return training;
+	}
+	
+	public Boolean deleteTraining(long training_id){
+		databaseHelper.deleteTraining(training_id);
+		return true;
 	}
 }

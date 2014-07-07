@@ -2,21 +2,19 @@ package il.ac.shenkar.MyTrainerIL.dao;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
-import java.util.TimeZone;
-
 import il.ac.shenkar.MyTrainerIL.R;
 import il.ac.shenkar.MyTrainerIL.entities.ExerciseTraining;
 import il.ac.shenkar.MyTrainerIL.entities.Training;
 import il.ac.shenkar.MyTrainerIL.entities.TrainingPlan;
 import il.ac.shenkar.MyTrainerIL.entities.UserPreferences;
 import il.ac.shenkar.MyTrainerIL.helper.DatabaseHelper;
-import android.content.ContentValues;
+import il.ac.shenkar.MyTrainerIL.reminder.ReminderHandler;
+import il.ac.shenkar.MyTrainerIL.utils.AppUtils;
 import android.content.Context;
-import android.net.Uri;
-import android.provider.CalendarContract;
-import android.provider.CalendarContract.Events;
-import android.widget.Toast;
+import android.util.Log;
 
 public class UserPreferencesDao {
 
@@ -49,19 +47,16 @@ public class UserPreferencesDao {
 		trainingPlan.setId(trainingPlan_id);
 		ArrayList<Training> trainingList = new ArrayList<Training>();
 		ArrayList<ExerciseTraining> userExerciseTrainingList = databaseHelper.getExerciseTrainingArrayListByUserPref(userPreferences);
-		String schedule = userPreferences.getSchedule();
-		String[] s1 = schedule.split("");
-		int sum = 0;
-		for(int i=1;i<schedule.length();i++){
-			if(s1[i] != null || !s1[i].isEmpty()){
-			sum+=Integer.parseInt(s1[i]);
-			}
-		}
+		int sum = AppUtils.scheduleCount(userPreferences.getSchedule());
 		int trainingsNum = 4*sum;
-		for(int i=0; i<=trainingsNum;i++){
+		int training_num = 0;
+		List<Integer> scheduleList = AppUtils.scheduleArray(userPreferences.getSchedule(), sum);
+		for(int i=0; i<trainingsNum;i++){
 			Training training = new Training();
+			int days = scheduleList.get(i);
 			ExerciseTraining exerciseTrainingPhase2 = null;
 			ArrayList<ExerciseTraining> exerciseTrainingList = new ArrayList<ExerciseTraining>();
+			long exerciseTrainingId = 0;
 			long training_id = databaseHelper.createTraining(training);
 			training.setId(training_id);
 			if (userExerciseTrainingList != null){
@@ -74,8 +69,9 @@ public class UserPreferencesDao {
 					ExerciseTraining exerciseTraining = exerciseTrainingArrayListByPhase1.get(index);
 					trainingLength += exerciseTraining.getExercise().getLength();
 					exerciseTraining.setTrainingId(training.getId());
+					exerciseTrainingId = databaseHelper.createExerciseTraining(exerciseTraining);
+					exerciseTraining.setId(exerciseTrainingId);
 					exerciseTrainingList.add(exerciseTraining);
-					databaseHelper.createExerciseTraining(exerciseTraining);
 				}
 				if((userPreferences.getPhase2()!= null) && (userPreferences.getPhase2())){
 					ArrayList<ExerciseTraining> exerciseTrainingArrayListByPhase2 = databaseHelper.getExerciseTrainingArrayListByPhase2(userPreferences);
@@ -93,17 +89,30 @@ public class UserPreferencesDao {
 						trainingLength += exerciseTraining.getExercise().getLength();
 						exerciseTraining.setTrainingId(training.getId());
 						indexList.add(index);
+						exerciseTrainingId = databaseHelper.createExerciseTraining(exerciseTraining);
+						exerciseTraining.setId(exerciseTrainingId);
 						exerciseTrainingList.add(exerciseTraining);
-						databaseHelper.createExerciseTraining(exerciseTraining);
 					}
 				}
 				if((userPreferences.getPhase2()!= null) && (userPreferences.getPhase2()) && exerciseTrainingPhase2 != null){
+					exerciseTrainingId = databaseHelper.createExerciseTraining(exerciseTrainingPhase2);
+					exerciseTrainingPhase2.setId(exerciseTrainingId);
 					exerciseTrainingList.add(exerciseTrainingPhase2);
-					databaseHelper.createExerciseTraining(exerciseTrainingPhase2);
 				}
 				training.setExerciseTrainngList(exerciseTrainingList);
-				//TODO - execute time + reminder
-				training.setName(context.getResources().getString(R.string.training_num) + " " + training.getId());
+				training_num++;
+				
+				//addReminder(days, training);
+				//test reminder
+				Calendar calendar = Calendar.getInstance();
+				calendar.add(Calendar.MINUTE, (int)training_id);
+				training.setExecuteDate(calendar.getTimeInMillis());
+				training.setExecuteTime(AppUtils.fromCalendarToString(calendar));
+				ReminderHandler.setReminder(context, training);
+				//end test
+				
+				
+				training.setName(context.getResources().getString(R.string.training_num) + " " + training_num);
 				training.setLength(trainingLength);
 				training.setTrainingPlanId(trainingPlan.getId());
 				databaseHelper.updateTraining(training);
@@ -114,7 +123,16 @@ public class UserPreferencesDao {
 		databaseHelper.updateTrainingPlan(trainingPlan);
 		return trainingPlan;
 	}
-	//TODO
+	
+	public void addReminder(int days, Training training){
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DATE, days);
+		training.setExecuteDate(calendar.getTimeInMillis());
+		training.setExecuteTime(AppUtils.fromCalendarToString(calendar));
+		ReminderHandler.setReminder(context, training);
+	}
+	
+/*	//TODO
 	public void addCalendarEvent(Context context, UserPreferences userPreferences) {
 		Calendar beginTime = Calendar.getInstance();
 	    beginTime.set(2013, 12, 20, 7, 30);
@@ -135,5 +153,22 @@ public class UserPreferencesDao {
 	    // the newly-inserted event, including its id
 	    int id = Integer.parseInt(uri.getLastPathSegment());
 	    Toast.makeText(context, "Created Calendar Event " + id, Toast.LENGTH_SHORT).show();
+	}*/
+	
+	public Boolean deleteUserPrefrences(long user_id){
+		if(user_id == 0){
+			user_id = databaseHelper.getLogin();
+		}
+		TrainingPlan trainingPlan = databaseHelper.getTrainingPlanByUser(user_id);
+		ArrayList<Training> trainings = trainingPlan.getTrainingList();
+		for(Iterator<Training> iterator = trainings.iterator(); iterator.hasNext();){
+			Training training = iterator.next();
+			databaseHelper.deleteExerciseTraining(training.getId());
+			databaseHelper.deleteTraining(training.getId());
+			iterator.remove();
+		}
+		Log.i("delete", "trainings deleted seccesfully");
+		databaseHelper.deleteTrainingPlanByUser(user_id);
+		return(databaseHelper.deleteUserPreferences(user_id));
 	}
 }

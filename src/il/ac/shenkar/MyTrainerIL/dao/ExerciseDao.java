@@ -19,4 +19,8 @@ public class ExerciseDao {
 		ExerciseTraining exerciseTraining = databaseHelper.getExerciseTraining(exerciseTraining_id);
 		return exerciseTraining;
 	}
+	
+	public Boolean deleteExerciseTraining(long training_id){
+		return(databaseHelper.deleteExerciseTraining(training_id));
+	}
 }

@@ -1,10 +1,8 @@
 package il.ac.shenkar.MyTrainerIL.entities;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TrainingPlan {
-	private static final long serialVersionUID = 1L;
 	
 	//private variables
 		private long id;

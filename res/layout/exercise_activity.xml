@@ -1,45 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  		android:layout_width="fill_parent"
-  		android:layout_height="wrap_content" 
-  		android:background="#ffffff">
-  		
-	<!-- Exercise Layout -->
-
-	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-	    android:padding="10dip" >
-
-	    <TextView
-	        android:id="@+id/text_view_name"
-	        android:layout_width="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background" >
+    <ImageButton android:id="@+id/btn_menu"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="20dp"
+       android:text="@string/menu"
+       android:src="@drawable/menu_btn"
+       android:background="@null"
+       android:contentDescription="@string/menu"
+       android:onClick="showPopup" />   
+    <RelativeLayout android:id="@+id/relative_layout_exercise"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:layout_below="@id/btn_menu"
+    	android:layout_centerHorizontal="true" >
+	    <TextView android:id="@+id/text_view_name"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="5dip"
-	        android:gravity="center"
 	        android:text="@string/exercise_name"
-	        android:textColor="#372c24" />
-
-	    <ImageView
-	        android:id="@+id/image_view_exercise"
-	        android:layout_width="250dp"
-	        android:layout_height="250dp"
-	        android:layout_gravity="center|center_vertical"
-	        android:layout_marginTop="15dip" />
-
-	    <TextView
-	        android:id="@+id/text_view_description"
-	        android:layout_width="300dp"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="10dip"
-	        android:layout_weight="0.5"
-	        android:gravity="right"
-	        android:text="@string/exercise_description"
-	        android:textColor="#372c24"
-	        android:textSize="16px" />
-	</LinearLayout>
-
-		<!-- Exercise Layout Ends --> 		
-
+	        android:layout_marginTop="5dp"
+	        android:layout_centerHorizontal="true"
+	        android:textColor="@color/black"
+	        android:textSize="24sp" />
+	    <ImageView android:id="@+id/image_view_exercise"
+	        android:layout_width="290dp"
+	        android:layout_height="290dp"
+	        android:layout_marginTop="30dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_below="@id/text_view_name"
+	        android:contentDescription="@string/exercise_name" />
+	    <RelativeLayout android:id="@+id/relative_layout_buttons"
+			android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_centerHorizontal="true"	            
+		    android:layout_below="@id/image_view_exercise" >
+	    	<ImageButton android:id="@+id/btn_exercise_back"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:layout_alignParentRight="true"
+		        android:layout_marginRight="80dp"
+		        android:src="@drawable/btn_exercise_back"
+		        android:background="@null"
+		        android:contentDescription="@string/exercise_back" />
+		   	<ImageButton android:id="@+id/btn_exercise_next"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_marginLeft="80dp"
+		        android:layout_alignTop="@id/btn_exercise_back"
+		        android:src="@drawable/btn_exercise_next"
+		        android:background="@null"
+		        android:contentDescription="@string/exercise_next" />
+	   	</RelativeLayout>
+        <RelativeLayout android:id="@+id/relative_layout_exercise_desc"
+	        android:layout_width="350dp"
+	    	android:layout_height="113dp"
+	    	android:layout_marginTop="10dp"
+	    	android:layout_below="@id/relative_layout_buttons"
+	    	android:layout_centerHorizontal="true"
+	    	android:background="@drawable/exercise_background">
+		    <TextView android:id="@+id/text_view_description"
+		        android:layout_width="330dp"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:layout_centerHorizontal="true"
+		        android:text="@string/exercise_description"
+		        android:textColor="@color/black"
+		        android:textSize="14sp" />
+		    </RelativeLayout>
+	</RelativeLayout>
 </RelativeLayout>

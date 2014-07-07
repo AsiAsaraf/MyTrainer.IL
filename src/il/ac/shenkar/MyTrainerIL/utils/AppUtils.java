@@ -1,9 +1,17 @@
 package il.ac.shenkar.MyTrainerIL.utils;
 
+import il.ac.shenkar.MyTrainerIL.R;
 import il.ac.shenkar.MyTrainerIL.entities.UserPreferences;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +34,51 @@ public class AppUtils
 			df = DateFormat.getTimeInstance(DateFormat.SHORT);
 			s += " " + df.format(calendar.getTime());
 			return s;
+		}
+		
+		public static int scheduleCount(String schedule){
+			String[] s1 = schedule.split("");
+			int sum = 0;
+			for(int i=1;i<schedule.length()+1;i++){
+				if(s1[i] != null || !s1[i].isEmpty()){
+				sum+=Integer.parseInt(s1[i]);
+				}
+			}
+			return sum;
+		}
+		
+		public static List<Integer> scheduleArray(String schedule, int scheduleCount){
+			Calendar calendar = Calendar.getInstance();
+			int day = calendar.get(Calendar.DAY_OF_WEEK); 
+			List<Integer> scheduleList = new ArrayList<Integer>();
+			String[] s1 = schedule.split("");
+			for(int i=1;i<schedule.length()+1;i++){
+				if(s1[i] != null || !s1[i].isEmpty()){
+					if(s1[i].equals("1")){
+						scheduleList.add(i);
+					}
+				}
+			}
+			int days = 0;
+			int value = 0;
+			for(int i=1;i<=3;i++){
+				if(i==1){
+					days=7;
+				} else {
+					if(i==2){
+						days=14;
+					} else {
+						if(i==3){
+							days=21;
+						}
+					}
+				}
+				for(int j=0;j<scheduleCount;j++){
+				value = scheduleList.get(j)+days;
+				scheduleList.add(value);
+				}
+			}
+			return scheduleList;
 		}
 		
 		public static void scheduleBoolToString(UserPreferences userPreferences){
@@ -123,4 +176,22 @@ public class AppUtils
 		    }
 		}
 	
+		public static void onButtonBackPressed(final Activity activity){
+	        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+	        builder.setTitle(R.string.on_back_button_title);
+	        builder.setMessage(R.string.on_back_button_message);
+	        builder.setPositiveButton(R.string.yes, new OnClickListener() {
+	            @Override
+	            public void onClick(DialogInterface dialog, int which) {
+	            	activity.finish();
+	            }
+	        });
+	        builder.setNegativeButton(R.string.no, new OnClickListener() {
+	            @Override
+	            public void onClick(DialogInterface dialog, int which) {
+
+	            }
+	        });
+	        builder.show();
+		}
 }
