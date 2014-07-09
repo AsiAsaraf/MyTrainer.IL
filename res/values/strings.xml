@@ -56,7 +56,7 @@
 	<string name="col_exercise_length">אורך</string>
 	<string name="col_exercise_training">שייך לאימון</string>
 	
-	<string name="training_num">אימון מספר</string>
+	<string name="training_num">אימון</string>
 	
 	<!-- training plan activity strings -->
 	<string name="col_training_num">מספר</string>

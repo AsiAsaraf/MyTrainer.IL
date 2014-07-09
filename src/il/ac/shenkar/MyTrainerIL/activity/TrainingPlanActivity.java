@@ -197,4 +197,9 @@ public class TrainingPlanActivity extends Activity{
     public void onBackPressed() {
     	AppUtils.onButtonBackPressed(this);
     }
+    
+    @Override
+    public void onDestroy() {
+    	super.onStop();
+    }
 }

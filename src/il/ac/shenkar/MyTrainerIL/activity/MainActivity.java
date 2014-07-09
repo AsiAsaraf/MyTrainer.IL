@@ -161,4 +161,8 @@ public class MainActivity extends Activity {
     	AppUtils.onButtonBackPressed(this);
     }
     
+    @Override
+    public void onDestroy() {
+    	super.onStop();
+    }
 }

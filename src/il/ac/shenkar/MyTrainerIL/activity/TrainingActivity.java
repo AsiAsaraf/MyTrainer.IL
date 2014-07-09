@@ -141,7 +141,7 @@ public class TrainingActivity extends Activity{
 	
 	    // FIRST COLUMN
 	    int h = 50;
-	    TableRow.LayoutParams col1Params = new TableRow.LayoutParams(12, h);
+	    TableRow.LayoutParams col1Params = new TableRow.LayoutParams(52, h);
 	    col1Params.gravity = Gravity.CENTER;
 	    TextView col1 = new TextView(context);
 	    col1.setTextColor(getResources().getColor(R.color.black));	    
@@ -156,7 +156,7 @@ public class TrainingActivity extends Activity{
 	    row.addView(col1, col1Params);
 	
 	    // SECOND COLUMN
-	    TableRow.LayoutParams col2Params = new TableRow.LayoutParams(8, h);
+	    TableRow.LayoutParams col2Params = new TableRow.LayoutParams(3, h);
 	    col2Params.gravity = Gravity.CENTER;
 	    TextView col2 = new TextView(context);
 	    col2.setTextColor(getResources().getColor(R.color.black));	    
@@ -171,7 +171,7 @@ public class TrainingActivity extends Activity{
 	    row.addView(col2, col2Params);
 	    
 	    // THIRD COLUMN
-	    TableRow.LayoutParams col3Params = new TableRow.LayoutParams(100, h);
+	    TableRow.LayoutParams col3Params = new TableRow.LayoutParams(265, h);
 	    TextView col3 = new TextView(context);
 	    col3.setTextColor(getResources().getColor(R.color.black));
 	    col3.setTextSize(16);
@@ -207,4 +207,8 @@ public class TrainingActivity extends Activity{
     	AppUtils.onButtonBackPressed(this);
     }
     
+    @Override
+    public void onDestroy() {
+    	super.onStop();
+    }
 }
